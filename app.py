@@ -15,8 +15,6 @@ import os
 load_dotenv()
 
 api_key = os.getenv("API_KEY")
-# if "wishlist" not in st.session_state:
-#     st.session_state.wishlist = []
 if "watchlist" not in st.session_state:
     st.session_state.watchlist = {}
 if "user_data" not in st.session_state:

@@ -1,25 +1,28 @@
 import streamlit as st
-import requests
-import os
-from dotenv import load_dotenv
+from utils import get_details, fetch_all_pages 
 
-load_dotenv()
-api_key = os.getenv("API_KEY")
+# load_dotenv()
+# api_key = os.getenv("API_KEY")
 
-if "watchlist" not in st.session_state:
-    st.session_state.watchlist = {}
-if "watchlist_dict" not in st.session_state:
-    st.session_state.watchlist_dict = {}
-if "favorite_genres" not in st.session_state:
-    st.session_state.favorite_genres = set()
+# def get_details(imdb_id):
+#     url = f"http://www.omdbapi.com/?apikey={api_key}&i={imdb_id}"
+#     return requests.get(url).json()
 
-def get_details(imdb_id):
-    url = f"http://www.omdbapi.com/?apikey={api_key}&i={imdb_id}"
-    return requests.get(url).json()
+# def fetch_by_type(content_type, page=1):
+#     """Fetch movies or shows by type with pagination."""
+#     url = f"http://www.omdbapi.com/?apikey={api_key}&s={content_type}&page={page}"
+#     return requests.get(url).json()
 
-def fetch_by_type(content_type):
-    url = f"http://www.omdbapi.com/?apikey={api_key}&s={content_type}"
-    return requests.get(url).json()
+# def fetch_all_pages(content_type, max_pages=5):
+#     """Fetch multiple pages of results."""
+#     all_results = []
+#     for page in range(1, max_pages + 1):
+#         data = fetch_by_type(content_type, page)
+#         if data.get("Response") == "True":
+#             all_results.extend(data["Search"])
+#         else:
+#             break
+#     return all_results
 
 
 st.info("Auto-recommendations based on your favorite genres!")
@@ -32,16 +35,14 @@ favorite_genres = list(st.session_state.favorite_genres)
 if not favorite_genres:
     st.warning("Add movies to your watchlist to build your favorite genres.")
 else:
-    count = 0
+    st.write(f"Your favorite genres: {', '.join(favorite_genres)}")
    
 
 # Fetch movies by type and store them in a variable
-data = fetch_by_type(content_type)
+fetched_movies = fetch_all_pages(content_type)
 
-if data.get("Response") == "True":
-    fetched_movies = data["Search"]  # Store all fetched movies
-    filtered_movies = []  # To store movies matching favorite genres
-
+if fetched_movies:
+    filtered_movies = []
     for item in fetched_movies:
         imdb_id = item["imdbID"]
         details = get_details(imdb_id)
@@ -50,21 +51,17 @@ if data.get("Response") == "True":
             genres = set(g.strip().lower() for g in details.get("Genre", "").split(","))
             matched = st.session_state.favorite_genres & genres
 
-            if matched:  # If there is a match
-                filtered_movies.append(details)  # Store the movie in the filtered list
+            if matched:
+                filtered_movies.append(details)
 
-    # Display the filtered movies
-   
     if filtered_movies:
-        
-        for movie in filtered_movies:
+        for movie in filtered_movies:  
             st.subheader(movie.get("Title"))
             st.image(movie.get("Poster"), use_column_width=True)
             st.write(f"Year: {movie.get('Year')}")
             st.write(f"Rating: {movie.get('imdbRating')}")
             st.write(f"Genre: {movie.get('Genre')}")
             st.caption(movie.get("Plot"))
-
     else:
         st.warning("No movies match your favorite genres.")
 else:
