@@ -71,7 +71,6 @@ streamlit run 0_Home.py
 
 ## Screenshots
 
-> Add screenshots of your app here to show how it looks.
 ## 🎬 Home Page
 ![Image](https://github.com/user-attachments/assets/a6b166bb-4340-4486-8a98-a12c44280bf3)
 ## 📋 Watchlist Page
