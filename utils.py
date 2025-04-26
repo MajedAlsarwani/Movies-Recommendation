@@ -6,6 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("API_KEY")
 
+
+def fetch_movie(query):
+    url = f'http://www.omdbapi.com/?i=tt3896198&apikey={api_key}&s={query}'
+    response = requests.get(url)
+    return response.json()
+
 def get_details(imdb_id):
     """Fetch detailed information about a movie or show."""
     url = f"http://www.omdbapi.com/?apikey={api_key}&i={imdb_id}"
