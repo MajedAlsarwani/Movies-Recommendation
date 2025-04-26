@@ -3,7 +3,7 @@ import requests
 from utils import get_details, fetch_by_type
 
 st.set_page_config(
-    page_title="Movie Search",
+    page_title="MoonFlix",
     page_icon="🎬",
 )
 
@@ -17,8 +17,8 @@ if "user_data" not in st.session_state:
 if "favorite_genres" not in st.session_state:
     st.session_state.favorite_genres = set()
 
-st.title("🎬 Movie Search with OMDb API")
-
+st.title("🎬 MoonFlix 🎬")
+st.subheader("Shoot for the Stars. Land a Perfect Movie.")
 movie_query = st.text_input('Start typing a movie name...')
 
 # condition to check if movie name was given
