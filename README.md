@@ -13,14 +13,7 @@ A multi-page Streamlit application that allows you to search movies and series f
 
 ## Project Structure
 
-
-.
-├── 0_Home.py            # Home page: Search movies/shows and add to watchlist
-├── 1_Watchlist.py        # Watchlist page: View, rate, and manage your saved movies
-├── 2_Recommendations.py # Recommendations page: Get movie suggestions
-├── .env                  # Store your OMDb API Key
-├── requirements.txt      # List of Python packages required
-├── README.txt            # This file
+<pre> ```plaintext ## Project Structure . ├── 0_Home.py # Home page: Search movies/shows and add to watchlist ├── 1_Watchlist.py # Watchlist page: View, rate, and manage your saved movies ├── 2_Recommendations.py # Recommendations page: Get movie suggestions ├── .env # Store your OMDb API Key ├── requirements.txt # List of Python packages required └── README.txt # This file ``` </pre>
 
 
 ## Installation
