@@ -71,11 +71,11 @@ streamlit run 0_Home.py
 
 > Add screenshots of your app here to show how it looks.
 ## 🎬 Home Page
-![Home page](/screenshots/homepage.png)
+![Image](https://github.com/user-attachments/assets/a6b166bb-4340-4486-8a98-a12c44280bf3)
 ## 📋 Watchlist Page
-![WatchList page](/screenshots/page 2.png)
+![Image](https://github.com/user-attachments/assets/58965073-b83d-4904-8824-38707811f745)
 ## 🌟 Recommendations
-![Recommendations page](/screenshots/page 3.png)
+![Image](https://github.com/user-attachments/assets/0d6ae007-1c5e-435f-a0a4-1b47ded3255b)
 
 ## Notes
 
