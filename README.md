@@ -1,5 +1,5 @@
 Movie Recommendation
-# OMDb Streamlit App
+# 🎬 MoonFlix
 
 A multi-page Streamlit application that allows you to search movies and series from the OMDb API, add them to your watchlist, rate them, and get personalized recommendations based on your favorite genres!
 
@@ -72,7 +72,7 @@ streamlit run 0_Home.py
 ## Screenshots
 
 ## 🎬 Home Page
-![Image](https://github.com/user-attachments/assets/a6b166bb-4340-4486-8a98-a12c44280bf3)
+![Image](https://github.com/user-attachments/assets/100a341f-7db0-4efb-8b4b-8358dbf7a43d)
 ## 📋 Watchlist Page
 ![Image](https://github.com/user-attachments/assets/58965073-b83d-4904-8824-38707811f745)
 ## 🌟 Recommendations
