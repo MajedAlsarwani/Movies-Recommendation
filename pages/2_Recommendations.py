@@ -1,6 +1,13 @@
 import streamlit as st
 from utils import get_details, fetch_all_pages 
 
+if "watchlist" not in st.session_state:
+    st.session_state.watchlist = {}
+if "user_data" not in st.session_state:
+    st.session_state.user_data = {}
+if "favorite_genres" not in st.session_state:
+    st.session_state.favorite_genres = set()
+
 st.info("Auto-recommendations based on your favorite genres!")
 
 content_type = st.radio("Select content type:", ["movie", "series"], horizontal=True)
@@ -20,8 +27,8 @@ fetched_movies = fetch_all_pages(content_type)
 
 if fetched_movies:
     filtered_movies = []
-    for item in fetched_movies:
-        imdb_id = item["imdbID"]
+    for movieID in fetched_movies:
+        imdb_id = movieID["imdbID"]
         details = get_details(imdb_id)
 
         if details.get("Genre"):

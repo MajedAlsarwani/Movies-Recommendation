@@ -26,9 +26,10 @@ if movie_query:
     data = fetch_by_type(movie_query)
 
     if data['Response'] == "True":
+
         # Ask user how to sort
         sort_by = st.selectbox("Sort by", ["IMDb Rating", "Title A-Z", "Year"])
-
+        
         movies = sorted(
             data['Search'],
             key=lambda movie: (
